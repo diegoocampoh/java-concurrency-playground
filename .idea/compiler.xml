@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="java-concurrency-playground" target="8" />
+      <module name="java-concurrency-playground" target="9" />
     </bytecodeTargetLevel>
   </component>
 </project>

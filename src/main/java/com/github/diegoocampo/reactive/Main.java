@@ -5,7 +5,11 @@ import java.util.concurrent.Flow;
 public class Main {
 
 	public static void main(String[] args) {
-		getTemperaturesPublisher("Sydney").subscribe(new TempSubscriber());
+		System.out.printf("Thread: %s. Starting system. \n",Thread.currentThread().getName());
+		Flow.Publisher<TempInfo> sydneyTempPublisher = getTemperaturesPublisher("Sydney");
+		sydneyTempPublisher.subscribe(new TempSubscriber());
+		sydneyTempPublisher.subscribe(new TempSubscriberSkipper());
+		System.out.printf("Thread: %s. finishing system. \n",Thread.currentThread().getName());
 	}
 
 	private static Flow.Publisher<TempInfo> getTemperaturesPublisher(String town){

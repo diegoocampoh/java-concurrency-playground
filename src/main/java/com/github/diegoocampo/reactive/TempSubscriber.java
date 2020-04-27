@@ -1,6 +1,5 @@
 package com.github.diegoocampo.reactive;
 
-import java.util.concurrent.Flow;
 import java.util.concurrent.Flow.*;
 
 public class TempSubscriber implements Subscriber<TempInfo> {
@@ -10,14 +9,13 @@ public class TempSubscriber implements Subscriber<TempInfo> {
 	@Override
 	public void onSubscribe(Subscription subscription) {
 		this.subrscription = subscription;
-		subscription.request(1);
-
+		System.out.printf("---> TempSubscriber\tThread: %s. Requesting 10 items\n",Thread.currentThread().getName());
+		subscription.request(10);
 	}
 
 	@Override
 	public void onNext(TempInfo item) {
-		System.out.println(item);
-		subrscription.request(1);
+		System.out.printf("TempSubscriber\tThread: %s. onNext item. %s\n",Thread.currentThread().getName(),item);
 	}
 
 	@Override
@@ -27,6 +25,6 @@ public class TempSubscriber implements Subscriber<TempInfo> {
 
 	@Override
 	public void onComplete() {
-		System.out.println("Done!");
+		System.out.printf("TempSubscriber\tThread: %s. Done!.\n",Thread.currentThread().getName());
 	}
 }

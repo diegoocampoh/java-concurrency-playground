@@ -31,4 +31,12 @@ public class SyncStore {
 			throw new RuntimeException(e);
 		}
 	}
+
+	protected void sleep(long ms){
+		try {
+			Thread.sleep(ms);
+		} catch (InterruptedException e) {
+			throw new RuntimeException(e);
+		}
+	}
 }
